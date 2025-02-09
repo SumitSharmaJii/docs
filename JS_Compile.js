@@ -505,6 +505,19 @@ Promise.myAllSettled = function (promises) {
     });
 };
 
+// FUNCTION.BIND
+Function.prototype.myBind = function (context, ...args) {
+  if (typeof this !== "function") {
+      throw new TypeError("Bind must be called on a function");
+  }
+
+  let fn = this;
+
+  return function (...newArgs) {
+      return fn.apply(context, [...args, ...newArgs]);
+  };
+};
+
 
 
 
